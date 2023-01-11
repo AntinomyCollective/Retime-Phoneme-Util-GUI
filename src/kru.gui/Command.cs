@@ -7,7 +7,7 @@ internal record Command(string InputFile, string OutputFile, bool Clean, bool Sa
 {
     private string ExecutablePath =>
         Path.Combine(
-            Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location!)!,
+            Path.GetDirectoryName(System.AppContext.BaseDirectory!)!,
             @"Tools\x64\retime_phoneme.exe"
         );
 
@@ -42,7 +42,7 @@ internal record Command(string InputFile, string OutputFile, bool Clean, bool Sa
         }
         if (SaveLog)
         {
-            yield return "-o";
+            yield return "-l";
         }
     }
 }

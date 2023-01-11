@@ -50,7 +50,7 @@ public partial class frmMain : Form
             SaveLog = chkSaveLogs.Checked,
         };
         var commands = Directory
-            .GetFiles(options.Input)
+            .GetFiles(options.Input, "*.wav")
             .Select(inputFile => new Command(inputFile, Path.Combine(options.Output, Path.GetFileName(inputFile)), options.Clean, options.SaveLog))
             .ToArray();
 
@@ -69,5 +69,15 @@ public partial class frmMain : Form
         }
         this.Enabled = true;
         MessageBox.Show("Done!");
+    }
+
+    private void frmMain_Load(object sender, EventArgs e)
+    {
+
+    }
+
+    private void sfdOutput_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+    {
+
     }
 }
