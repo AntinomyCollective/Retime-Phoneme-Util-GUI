@@ -2,9 +2,31 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+	<Nullable>enable</Nullable>
+    <PublishTrimmed>false</PublishTrimmed>
+    <PublishReadyToRun>true</PublishReadyToRun>
     <TargetFramework>net7.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <PackageId>AntinomyCollective.kru.gui</PackageId>
+    <Authors>Antinomy Collective, EpicMorg, kasthack, stam</Authors>
+    <Description>Retime Phoneme Util GUI by EpicMorg</Description>
+    <PackageProjectUrl>https://github.com/AntinomyCollective/Retime-Phoneme-Uti-GUI</PackageProjectUrl>
+    <PackageIcon>favicon.png</PackageIcon>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/AntinomyCollective/Retime-Phoneme-Uti-GUI</RepositoryUrl>
+    <PackageTags>epicmorg, retime, Phoneme, Util, GUI, Antinomy, Collective</PackageTags>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Version>1.0.0.0</Version>
+    <Copyright>EpicMorg 2023</Copyright>
+    <Product>Retime Phoneme Util GUI</Product>
+    <IsPackable>true</IsPackable>
+    <Company>EpicMorg</Company>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <UseWindowsForms>True</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
@@ -34,5 +56,4 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
 </Project>
