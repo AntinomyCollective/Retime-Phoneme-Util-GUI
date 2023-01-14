@@ -1,33 +1,45 @@
-﻿namespace ConverterGui;
+namespace ConverterGui;
 
+using System;
 using System.Diagnostics;
 using System.Reflection;
 
-internal record Command(string InputFile, string OutputFile, bool Clean, bool SaveLog)
+internal record Command(string InputFile, string OutputFile, string OutputFileClean, bool Clean, bool SaveLog,string Bitness)
 {
+   
     private string ExecutablePath =>
         Path.Combine(
             Path.GetDirectoryName(System.AppContext.BaseDirectory!)!,
-            @"Tools\x64\retime_phoneme.exe"
+            @"Tools\"+ Bitness + @"\retime_phoneme.exe"
         );
 
     public string GetBatchLine() => string.Join(" ", new[] { $"\"{ExecutablePath}\"" }.Concat(GetArguments().Select(arg => $"\"{arg}\"")));
 
     public Process GetProcess()
     {
-        var proc = new Process()
+        try
         {
-            StartInfo = new ProcessStartInfo
+            var proc = new Process()
             {
-                FileName = ExecutablePath
-            },
-            EnableRaisingEvents = true,
-        };
-        foreach (var item in this.GetArguments())
-        {
-            proc.StartInfo.ArgumentList.Add(item);
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = ExecutablePath
+                },
+                EnableRaisingEvents = true,
+            };
+            foreach (var item in this.GetArguments())
+            {
+                proc.StartInfo.ArgumentList.Add(item);
+            }
+
+            return proc;
         }
-        return proc;
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.ToString(), @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Application.Restart();
+            return null!;
+        }
     }
 
     private IEnumerable<string> GetArguments()
@@ -39,6 +51,7 @@ internal record Command(string InputFile, string OutputFile, bool Clean, bool Sa
         if (Clean)
         {
             yield return "-oc";
+            yield return OutputFileClean; 
         }
         if (SaveLog)
         {
