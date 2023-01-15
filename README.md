@@ -4,3 +4,5 @@
 
 ## What is this?
 This is a useful graphical user interface written by EpicMorg Team in C# (.NET 7) for original console tool named as "Retime Phoneme Util" developed by [wowks](https://forum.csmania.ru/memberlist.php?mode=viewprofile&u=59383) at forum [CSMania](https://forum.csmania.ru/viewtopic.php?t=43274).
+
+[![image](https://user-images.githubusercontent.com/1307229/212532738-7c18da74-c9c0-4401-ba21-411284974fbe.png)](https://github.com/AntinomyCollective/Retime-Phoneme-Util-GUI/)
