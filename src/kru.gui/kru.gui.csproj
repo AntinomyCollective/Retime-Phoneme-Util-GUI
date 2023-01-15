@@ -1,36 +1,51 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <PublishSingleFile>true</PublishSingleFile>
-    <SelfContained>true</SelfContained>
-    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-	<Nullable>enable</Nullable>
-    <PublishTrimmed>false</PublishTrimmed>
-    <PublishReadyToRun>true</PublishReadyToRun>
-    <TargetFramework>net7.0-windows</TargetFramework>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
+    <PackageVersion>1.1.0.0</PackageVersion>
+    <Version>1.1.0.0</Version>
+    
     <ApplicationIcon>favicon.ico</ApplicationIcon>
-    <PackageId>AntinomyCollective.kru.gui</PackageId>
     <Authors>Antinomy Collective, EpicMorg, kasthack, stam</Authors>
+    <Company>EpicMorg</Company>
+    <Copyright>EpicMorg 2023</Copyright>
     <Description>Retime Phoneme Util GUI by EpicMorg</Description>
-    <PackageProjectUrl>https://github.com/AntinomyCollective/Retime-Phoneme-Uti-GUI</PackageProjectUrl>
+    <ImplicitUsings>enable</ImplicitUsings>
     <PackageIcon>favicon.png</PackageIcon>
+    <PackageId>AntinomyCollective.kru.gui</PackageId>
+    <PackageProjectUrl>https://github.com/AntinomyCollective/Retime-Phoneme-Uti-GUI</PackageProjectUrl>
+    <PackageTags>epicmorg, retime, Phoneme, Util, GUI, Antinomy, Collective</PackageTags>
+    <Product>Retime Phoneme Util GUI</Product>
+    <PublishReadyToRun>true</PublishReadyToRun>
+    <PublishSingleFile>true</PublishSingleFile>
+    <PublishTrimmed>false</PublishTrimmed>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/AntinomyCollective/Retime-Phoneme-Uti-GUI</RepositoryUrl>
-    <PackageTags>epicmorg, retime, Phoneme, Util, GUI, Antinomy, Collective</PackageTags>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
-    <Version>1.0.0.0</Version>
-    <Copyright>EpicMorg 2023</Copyright>
-    <Product>Retime Phoneme Util GUI</Product>
-    <IsPackable>true</IsPackable>
-    <Company>EpicMorg</Company>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <TargetFramework>net7.0-windows</TargetFramework>
     <UseWindowsForms>True</UseWindowsForms>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <OutputType>WinExe</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="favicon.png" Pack="true" PackagePath=""/>
     <None Update="Tools\x64\libgcc_s_seh-1.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
