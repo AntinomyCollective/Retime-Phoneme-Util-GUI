@@ -43,7 +43,8 @@ public partial class FrmMain : Form
         var enabled = !string.IsNullOrWhiteSpace(this.txtInput.Text)
             && !string.IsNullOrWhiteSpace(this.txtOutput.Text)
             && Directory.Exists(this.txtInput.Text)
-            && Directory.Exists(this.txtOutput.Text);
+            && Directory.Exists(this.txtOutput.Text)
+            && (!this.chkClean.Checked || (!string.IsNullOrWhiteSpace(this.txtOutputClean.Text) && Directory.Exists(this.txtOutputClean.Text)));
         this.btnSave.Enabled = this.btnStart.Enabled = enabled;
     }
 
@@ -105,7 +106,11 @@ public partial class FrmMain : Form
         this.Text = $"{name} {version} ({BitnessProvider.BitnessName})";
     }
 
-    private void chkClean_CheckedChanged(object sender, EventArgs e) => this.txtOutputClean.Enabled = this.btnBrowseOutputClean.Enabled = this.chkClean.Checked;
+    private void chkClean_CheckedChanged(object sender, EventArgs e)
+    {
+        this.txtOutputClean.Enabled = this.btnBrowseOutputClean.Enabled = this.chkClean.Checked;
+        this.EnableButtons();
+    }
 
     private void buttonAbout_Click(object sender, EventArgs e)
     {
