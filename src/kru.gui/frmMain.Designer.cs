@@ -1,6 +1,6 @@
 ﻿namespace ConverterGui;
 
-partial class frmMain
+partial class FrmMain
 {
     /// <summary>
     ///  Required designer variable.
@@ -28,7 +28,7 @@ partial class frmMain
     /// </summary>
     private void InitializeComponent()
     {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.txtInput = new System.Windows.Forms.TextBox();
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.btnBrowseInput = new System.Windows.Forms.Button();
@@ -55,10 +55,9 @@ partial class frmMain
             // 
             this.txtInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtInput.Location = new System.Drawing.Point(5, 21);
-            this.txtInput.Margin = new System.Windows.Forms.Padding(2);
+            this.txtInput.Location = new System.Drawing.Point(7, 35);
             this.txtInput.Name = "txtInput";
-            this.txtInput.Size = new System.Drawing.Size(292, 23);
+            this.txtInput.Size = new System.Drawing.Size(415, 31);
             this.txtInput.TabIndex = 1;
             this.txtInput.TextChanged += new System.EventHandler(this.TxtInputTextChanged);
             // 
@@ -66,20 +65,18 @@ partial class frmMain
             // 
             this.txtOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtOutput.Location = new System.Drawing.Point(5, 21);
-            this.txtOutput.Margin = new System.Windows.Forms.Padding(2);
+            this.txtOutput.Location = new System.Drawing.Point(7, 35);
             this.txtOutput.Name = "txtOutput";
-            this.txtOutput.Size = new System.Drawing.Size(292, 23);
+            this.txtOutput.Size = new System.Drawing.Size(415, 31);
             this.txtOutput.TabIndex = 3;
             this.txtOutput.TextChanged += new System.EventHandler(this.TxtOutputTextChanged);
             // 
             // btnBrowseInput
             // 
             this.btnBrowseInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBrowseInput.Location = new System.Drawing.Point(301, 21);
-            this.btnBrowseInput.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBrowseInput.Location = new System.Drawing.Point(430, 35);
             this.btnBrowseInput.Name = "btnBrowseInput";
-            this.btnBrowseInput.Size = new System.Drawing.Size(75, 23);
+            this.btnBrowseInput.Size = new System.Drawing.Size(107, 31);
             this.btnBrowseInput.TabIndex = 4;
             this.btnBrowseInput.Text = "Browse";
             this.btnBrowseInput.UseVisualStyleBackColor = true;
@@ -88,10 +85,9 @@ partial class frmMain
             // btnBrowseOutput
             // 
             this.btnBrowseOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBrowseOutput.Location = new System.Drawing.Point(301, 21);
-            this.btnBrowseOutput.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBrowseOutput.Location = new System.Drawing.Point(430, 35);
             this.btnBrowseOutput.Name = "btnBrowseOutput";
-            this.btnBrowseOutput.Size = new System.Drawing.Size(75, 23);
+            this.btnBrowseOutput.Size = new System.Drawing.Size(107, 31);
             this.btnBrowseOutput.TabIndex = 5;
             this.btnBrowseOutput.Text = "Browse";
             this.btnBrowseOutput.UseVisualStyleBackColor = true;
@@ -101,10 +97,9 @@ partial class frmMain
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(239, 233);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSave.Location = new System.Drawing.Point(341, 388);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(107, 38);
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save batch";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -114,10 +109,9 @@ partial class frmMain
             // 
             this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnStart.Enabled = false;
-            this.btnStart.Location = new System.Drawing.Point(318, 233);
-            this.btnStart.Margin = new System.Windows.Forms.Padding(2);
+            this.btnStart.Location = new System.Drawing.Point(454, 388);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(75, 23);
+            this.btnStart.Size = new System.Drawing.Size(107, 38);
             this.btnStart.TabIndex = 7;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -126,7 +120,6 @@ partial class frmMain
             // sfdOutput
             // 
             this.sfdOutput.Filter = "\"Batch File|*.bat|All files|*.*\"";
-            this.sfdOutput.FileOk += new System.ComponentModel.CancelEventHandler(this.sfdOutput_FileOk);
             // 
             // chkSaveLogs
             // 
@@ -134,10 +127,9 @@ partial class frmMain
             this.chkSaveLogs.AutoSize = true;
             this.chkSaveLogs.Checked = true;
             this.chkSaveLogs.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkSaveLogs.Location = new System.Drawing.Point(92, 236);
-            this.chkSaveLogs.Margin = new System.Windows.Forms.Padding(2);
+            this.chkSaveLogs.Location = new System.Drawing.Point(131, 396);
             this.chkSaveLogs.Name = "chkSaveLogs";
-            this.chkSaveLogs.Size = new System.Drawing.Size(75, 19);
+            this.chkSaveLogs.Size = new System.Drawing.Size(114, 29);
             this.chkSaveLogs.TabIndex = 9;
             this.chkSaveLogs.Text = "Save logs";
             this.chkSaveLogs.UseVisualStyleBackColor = true;
@@ -148,9 +140,11 @@ partial class frmMain
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxInput.Controls.Add(this.txtInput);
             this.groupBoxInput.Controls.Add(this.btnBrowseInput);
-            this.groupBoxInput.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxInput.Location = new System.Drawing.Point(17, 20);
+            this.groupBoxInput.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBoxInput.Name = "groupBoxInput";
-            this.groupBoxInput.Size = new System.Drawing.Size(381, 63);
+            this.groupBoxInput.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBoxInput.Size = new System.Drawing.Size(544, 105);
             this.groupBoxInput.TabIndex = 10;
             this.groupBoxInput.TabStop = false;
             this.groupBoxInput.Text = "Input folder:";
@@ -161,9 +155,11 @@ partial class frmMain
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxOutput.Controls.Add(this.txtOutput);
             this.groupBoxOutput.Controls.Add(this.btnBrowseOutput);
-            this.groupBoxOutput.Location = new System.Drawing.Point(12, 81);
+            this.groupBoxOutput.Location = new System.Drawing.Point(17, 135);
+            this.groupBoxOutput.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBoxOutput.Name = "groupBoxOutput";
-            this.groupBoxOutput.Size = new System.Drawing.Size(381, 63);
+            this.groupBoxOutput.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBoxOutput.Size = new System.Drawing.Size(544, 105);
             this.groupBoxOutput.TabIndex = 11;
             this.groupBoxOutput.TabStop = false;
             this.groupBoxOutput.Text = "Output folder:";
@@ -172,10 +168,9 @@ partial class frmMain
             // 
             this.chkClean.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkClean.AutoSize = true;
-            this.chkClean.Location = new System.Drawing.Point(5, 50);
-            this.chkClean.Margin = new System.Windows.Forms.Padding(2);
+            this.chkClean.Location = new System.Drawing.Point(7, 86);
             this.chkClean.Name = "chkClean";
-            this.chkClean.Size = new System.Drawing.Size(112, 19);
+            this.chkClean.Size = new System.Drawing.Size(167, 29);
             this.chkClean.TabIndex = 9;
             this.chkClean.Text = "Save Clean copy";
             this.chkClean.UseVisualStyleBackColor = true;
@@ -188,9 +183,11 @@ partial class frmMain
             this.groupBox1.Controls.Add(this.txtOutputClean);
             this.groupBox1.Controls.Add(this.btnBrowseOutputClean);
             this.groupBox1.Controls.Add(this.chkClean);
-            this.groupBox1.Location = new System.Drawing.Point(12, 150);
+            this.groupBox1.Location = new System.Drawing.Point(17, 250);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(381, 74);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox1.Size = new System.Drawing.Size(544, 123);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Output folder for clean files (Optional):";
@@ -200,10 +197,9 @@ partial class frmMain
             this.txtOutputClean.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtOutputClean.Enabled = false;
-            this.txtOutputClean.Location = new System.Drawing.Point(5, 21);
-            this.txtOutputClean.Margin = new System.Windows.Forms.Padding(2);
+            this.txtOutputClean.Location = new System.Drawing.Point(7, 35);
             this.txtOutputClean.Name = "txtOutputClean";
-            this.txtOutputClean.Size = new System.Drawing.Size(292, 23);
+            this.txtOutputClean.Size = new System.Drawing.Size(415, 31);
             this.txtOutputClean.TabIndex = 3;
             this.txtOutputClean.TextChanged += new System.EventHandler(this.TxtOutputTextChanged);
             // 
@@ -211,10 +207,9 @@ partial class frmMain
             // 
             this.btnBrowseOutputClean.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBrowseOutputClean.Enabled = false;
-            this.btnBrowseOutputClean.Location = new System.Drawing.Point(301, 21);
-            this.btnBrowseOutputClean.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBrowseOutputClean.Location = new System.Drawing.Point(430, 35);
             this.btnBrowseOutputClean.Name = "btnBrowseOutputClean";
-            this.btnBrowseOutputClean.Size = new System.Drawing.Size(75, 23);
+            this.btnBrowseOutputClean.Size = new System.Drawing.Size(107, 31);
             this.btnBrowseOutputClean.TabIndex = 5;
             this.btnBrowseOutputClean.Text = "Browse";
             this.btnBrowseOutputClean.UseVisualStyleBackColor = true;
@@ -223,9 +218,10 @@ partial class frmMain
             // buttonAbout
             // 
             this.buttonAbout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonAbout.Location = new System.Drawing.Point(12, 233);
+            this.buttonAbout.Location = new System.Drawing.Point(17, 388);
+            this.buttonAbout.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonAbout.Name = "buttonAbout";
-            this.buttonAbout.Size = new System.Drawing.Size(75, 23);
+            this.buttonAbout.Size = new System.Drawing.Size(107, 38);
             this.buttonAbout.TabIndex = 12;
             this.buttonAbout.Text = "About";
             this.buttonAbout.UseVisualStyleBackColor = true;
@@ -233,9 +229,9 @@ partial class frmMain
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(404, 267);
+            this.ClientSize = new System.Drawing.Size(577, 445);
             this.Controls.Add(this.buttonAbout);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.chkSaveLogs);
@@ -245,8 +241,7 @@ partial class frmMain
             this.Controls.Add(this.btnSave);
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(420, 306);
+            this.MinimumSize = new System.Drawing.Size(591, 473);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "appName";

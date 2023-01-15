@@ -1,22 +1,11 @@
-using System.Reflection;
-using kru.gui;
-
 namespace ConverterGui;
-public partial class frmMain : Form
+
+using kru.gui;
+using kru.gui.Core;
+
+public partial class FrmMain : Form
 {
-    public frmMain() => InitializeComponent();
-    public string archbitness = "x86";
-    public void bitness()
-    {
-        if (Environment.Is64BitProcess == true && Environment.Is64BitOperatingSystem == true)
-        {
-            archbitness = "x64";
-        }
-        else
-        {
-            archbitness = "x86";
-        }
-    }
+    public FrmMain() => this.InitializeComponent();
 
     private void BtnBrowseOutputClick(object sender, EventArgs e) => this.txtOutput.Text = this.fbBrowseOutput.ShowDialog() == DialogResult.OK ? this.fbBrowseOutput.SelectedPath : string.Empty;
 
@@ -27,35 +16,33 @@ public partial class frmMain : Form
     private void TxtOutputTextChanged(object sender, EventArgs e)
     {
         this.fbBrowseOutput.SelectedPath = this.txtOutput.Text;
-        EnableButtons();
+        this.EnableButtons();
     }
 
     private void TxtInputTextChanged(object sender, EventArgs e)
     {
         this.fbBrowseInput.SelectedPath = this.txtInput.Text;
-        EnableButtons();
+        this.EnableButtons();
     }
 
     private void BtnSaveClick(object sender, EventArgs e)
     {
-        var commands = GetCommands();
+        var commands = this.GetCommands();
 
-        if (sfdOutput.ShowDialog() == DialogResult.OK)
+        if (this.sfdOutput.ShowDialog() == DialogResult.OK)
         {
-            File.WriteAllLines(sfdOutput.FileName, commands
+            File.WriteAllLines(this.sfdOutput.FileName, commands
                 .Select(a => a.GetBatchLine()));
         }
 
-        MessageBox.Show(@"Done!",@"Success!",MessageBoxButtons.OK,MessageBoxIcon.Information);
+        MessageBox.Show("Done!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 
     private void EnableButtons()
     {
         var enabled = !string.IsNullOrWhiteSpace(this.txtInput.Text)
             && !string.IsNullOrWhiteSpace(this.txtOutput.Text)
-            //&& !string.IsNullOrWhiteSpace(this.txtOutputClean.Text)
             && Directory.Exists(this.txtInput.Text)
-            //&& Directory.Exists(this.txtOutputClean.Text)
             && Directory.Exists(this.txtOutput.Text);
         this.btnSave.Enabled = this.btnStart.Enabled = enabled;
     }
@@ -68,12 +55,16 @@ public partial class frmMain : Form
             Output = this.txtOutput.Text,
             OutputClean = this.txtOutputClean.Text,
             Clean = this.chkClean.Checked,
-            SaveLog = chkSaveLogs.Checked,
-            Bitness = archbitness
+            SaveLog = this.chkSaveLogs.Checked,
         };
+
         var commands = Directory
             .GetFiles(options.Input, "*.wav")
-            .Select(inputFile => new Command(inputFile, Path.Combine(options.Output, Path.GetFileName(inputFile)), Path.Combine(options.OutputClean, Path.GetFileName(inputFile)), options.Clean, options.SaveLog,options.Bitness))
+            .Select(inputFile => new Command(
+                InputFile: inputFile,
+                OutputDirectory: options.Output,
+                CleanDirectory: options.Clean ? options.OutputClean : default,
+                SaveLog: options.SaveLog))
             .ToArray();
 
         return commands;
@@ -82,38 +73,43 @@ public partial class frmMain : Form
     private async void btnStart_Click(object sender, EventArgs e)
     {
         this.Enabled = false;
-        var commands = GetCommands();
-        foreach (var command in commands)
+        try
         {
-            var proc = command.GetProcess();
-            proc.Start();
-            await proc.WaitForExitAsync().ConfigureAwait(false);
+            var commands = this.GetCommands();
+            foreach (var command in commands)
+            {
+                var proc = command.GetProcess();
+                try
+                {
+                    proc.Start();
+                    await proc.WaitForExitAsync().ConfigureAwait(false);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error", $"An error has occured while trying to launch command: {ex.Message}", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            MessageBox.Show("Done!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        this.Enabled = true;
-        MessageBox.Show(@"Done!", @"Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        finally
+        {
+            this.Enabled = true;
+        }
     }
 
     private void frmMain_Load(object sender, EventArgs e)
     {
-     bitness();
-     var appVer = Assembly.GetEntryAssembly()!.GetCustomAttribute<AssemblyInformationalVersionAttribute>()!.InformationalVersion;
-     var appName = Assembly.GetEntryAssembly()!.GetCustomAttribute<AssemblyProductAttribute>()!.Product;
-     this.Text = $@"{appName} {appVer} ({archbitness})";
+        var (version, name, _) = ApplicationInfoProvider.GetInfo();
+        this.Text = $"{name} {version} ({BitnessProvider.BitnessName})";
     }
 
-    private void sfdOutput_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
-    {
-
-    }
-
-    private void chkClean_CheckedChanged(object sender, EventArgs e)
-    {
-        txtOutputClean.Enabled = btnBrowseOutputClean.Enabled = chkClean.Checked;
-    }
+    private void chkClean_CheckedChanged(object sender, EventArgs e) => this.txtOutputClean.Enabled = this.btnBrowseOutputClean.Enabled = this.chkClean.Checked;
 
     private void buttonAbout_Click(object sender, EventArgs e)
     {
-        var frmabout = new frmAbout();
-        frmabout.ShowDialog();
+        using var about = new FrmAbout();
+        about.ShowDialog();
     }
 }
